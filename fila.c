@@ -31,11 +31,6 @@ void inserirFila(Fila *fila, struct aluno dados)
 }
 
 
-void inserirFila2(Fila *fila, struct aluno dados)
-{
-    inserirPilha(fila->p2, dados);
-}
-
 void imprimeFila(Fila *fila)
 {
     if(vazia(fila->p1)) {
