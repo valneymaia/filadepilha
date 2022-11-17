@@ -25,9 +25,37 @@ Fila * criarFila()
     return fila;
 }
 
+struct aluno teste(struct aluno *dados)
+{
+    struct aluno novo;
+    strcpy(novo.nome, dados->nome);
+    novo.matricula = dados->matricula;
+    return novo;
+}
+
+
 void inserirFila(Fila *fila, struct aluno dados)
 {
+  struct aluno aux;
+    if(fila == NULL)
+        return;
+
+    if(topo(fila) == NULL) {
+        inserirPilha(fila->p1, dados);
+        return;
+    }
+
+    while(!vazia(fila->p1)) {
+        inserirPilha(fila->p2, *(remover(fila->p1)));
+    }
+
     inserirPilha(fila->p1, dados);
+
+    while(!vazia(fila->p2)) {
+        aux = teste(acessar(fila->p2));
+        inserirPilha(fila->p1, aux);
+        remover(fila->p2);
+    }
 }
 
 
@@ -38,12 +66,12 @@ void imprimeFila(Fila *fila)
     }
     else
         imprimePilha(fila->p1);
-    if(vazia(fila->p2))
+   /*if(vazia(fila->p2))
         printf("Pilha 2 vazia\n");
     else
         printf("pilha dois \n");
         imprimePilha(fila->p2);
-    printf("\n");
+    printf("\n");*/
 }
 
 
