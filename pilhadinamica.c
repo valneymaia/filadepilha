@@ -107,6 +107,16 @@ struct aluno * acessar(Pilha *pilha)
 
 struct aluno * remover(Pilha *pilha)
 {
+    if(vazia(pilha) || tamanho(pilha) <= 0)
+        return NULL;
+
+    Elemento *aux = pilha->topo;
+
+    pilha->topo = pilha->topo->proximo;
+    return aux;
+}
+/*struct aluno * remover(Pilha *pilha)
+{
     Elemento *penultimo = NULL, *ultimo = NULL, *aux = NULL;
 
     if(vazia(pilha))
@@ -136,7 +146,7 @@ struct aluno * remover(Pilha *pilha)
     return aux;
 }
 
-
+*/
 void destruir(Pilha *pilha)
 {
     if(!vazia(pilha)) {
